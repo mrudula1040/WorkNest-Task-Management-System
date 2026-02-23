@@ -81,7 +81,8 @@ Layered Architecture (Controller – Service – Repository)
 JPA Relationships
 
 # 🗃️ Database Entities #
- User
+
+# User
 
 id
 
@@ -95,7 +96,7 @@ role
 
 manager
 
-Task
+# Task
 
 id
 
