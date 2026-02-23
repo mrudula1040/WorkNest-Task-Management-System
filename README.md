@@ -82,22 +82,34 @@ JPA Relationships
 
 # 🗃️ Database Entities #
  User
+
 id
+
 name
+
 email
+
 password
+
 role
+
 manager
 
- Task
-id
-title
-description
-status
-priority
-dueDate
-assignedUser
+Task
 
+id
+
+title
+
+description
+
+status
+
+priority
+
+dueDate
+
+assignedUser
 
 # 📚 Learning Purpose #
 
