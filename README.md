@@ -19,14 +19,14 @@ Spring Data JPA
 
 Maven
 
-📌 Project Overview
+# 📌 Project Overview
 
 This project simulates a real-world company task management system where different roles have different responsibilities and access levels.
 
 Each user sees a dashboard based on their role.
 
 # 👥 Roles & Functionalities #
-# 👨‍💼 Admin
+ 👨‍💼 Admin
 
 View total users and tasks
 
@@ -36,7 +36,7 @@ Assign tasks to employees
 
 View recent and overdue tasks
 
-# 👨‍💻 Manager
+👨‍💻 Manager
 
 View assigned team members
 
@@ -44,7 +44,7 @@ Monitor team task progress
 
 Track task status
 
-# 🧑‍💼 HR
+ 🧑‍💼 HR
 
 View all employees
 
@@ -52,7 +52,7 @@ Assign managers to employees
 
 Manage employee structure
 
-# 👩‍💻 Employee
+👩‍💻 Employee
 
 View assigned tasks
 
@@ -81,7 +81,7 @@ Layered Architecture (Controller – Service – Repository)
 JPA Relationships
 
 # 🗃️ Database Entities #
-# User
+ User
 id
 name
 email
@@ -89,7 +89,7 @@ password
 role
 manager
 
-# Task
+ Task
 id
 title
 description
