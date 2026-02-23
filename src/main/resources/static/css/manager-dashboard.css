@@ -1,0 +1,196 @@
+/* ===============================
+   DASHBOARD LAYOUT
+================================ */
+
+.dashboard-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 16px;
+}
+
+/* ===============================
+   HEADER / WELCOME SECTION
+================================ */
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 22px 28px;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.welcome-section h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.welcome-section p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.role-badge {
+    background: #2563eb;
+    color: #fff;
+    padding: 6px 14px;
+    font-size: 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ===============================
+   CARD
+================================ */
+
+.recent-tasks-card {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.card-header h2 {
+    font-size: 18px;
+}
+
+.count-badge {
+    background: #eef2ff;
+    color: #3730a3;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* ===============================
+   TABLE
+================================ */
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.recent-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.recent-table thead {
+    background: #f8fafc;
+}
+
+.recent-table th {
+    text-align: left;
+    padding: 14px 12px;
+    font-size: 13px;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.recent-table td {
+    padding: 14px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.recent-table tr:hover {
+    background: #f9fafb;
+}
+
+.center {
+    text-align: center;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.btn {
+    padding: 8px 16px;
+    font-size: 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn.outline {
+    border: 1px solid #2563eb;
+    color: #2563eb;
+    background: transparent;
+}
+
+.btn.outline:hover {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* ===============================
+   STATUS BADGES
+================================ */
+
+.status-badge {
+    padding: 5px 12px;
+    font-size: 12px;
+    border-radius: 14px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+/* dynamic status colors */
+.status-badge.PENDING {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.status-badge.IN_PROGRESS {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.status-badge.COMPLETED {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+/* ===============================
+   EMPTY STATE
+================================ */
+
+.recent-table td[colspan] {
+    padding: 20px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+    .welcome-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}

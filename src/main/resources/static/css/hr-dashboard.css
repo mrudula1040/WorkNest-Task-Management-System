@@ -1,0 +1,95 @@
+/* ==============================
+   HR DASHBOARD – LAYOUT FIX
+   ============================== */
+
+/* Constrain content width */
+.dashboard-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Section spacing */
+.recent-tasks-card {
+    margin-top: 24px;
+}
+
+/* Table layout correction */
+.recent-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px; /* row breathing room */
+}
+
+/* Header */
+.recent-table thead th {
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+    padding-bottom: 8px;
+}
+
+/* Body cells */
+.recent-table tbody td {
+    background: #ffffff;
+    padding: 10px 12px;
+    vertical-align: middle;
+    font-size: 14px;
+}
+
+/* Rounded rows */
+.recent-table tbody tr td:first-child {
+    border-radius: 10px 0 0 10px;
+}
+.recent-table tbody tr td:last-child {
+    border-radius: 0 10px 10px 0;
+}
+
+/* Name + Email hierarchy */
+.recent-table td:nth-child(1) {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.recent-table td:nth-child(2) {
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* Manager column */
+.recent-table td:nth-child(3) {
+    font-weight: 500;
+}
+
+/* Assign manager column – compact */
+.recent-table td:nth-child(4) form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dropdown */
+.recent-table select {
+    min-width: 150px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 13px;
+}
+
+/* Assign button */
+.recent-table .btn {
+    padding: 6px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+}
+
+/* Not assigned badge */
+.status-badge.pending {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+}

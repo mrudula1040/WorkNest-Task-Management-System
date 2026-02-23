@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | Task</title>
+    <link rel="stylesheet" th:href="@{/css/add-task.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="form-container">
+    <div class="card">
+
+        <div class="title-section">
+            <h2 th:if="${statusOnly != null}">Update Task Status</h2>
+            <h2 th:if="${statusOnly == null and taskDto.id != null}">Edit Task</h2>
+            <h2 th:if="${statusOnly == null and taskDto.id == null}">Create New Task</h2>
+        </div>
+
+        <p class="subtitle">
+            <span th:if="${statusOnly != null}">Update only the task status.</span>
+            <span th:if="${statusOnly == null}">Fill in the details below to organize work.</span>
+        </p>
+
+        <form th:action="@{/task/save}" th:object="${taskDto}" method="post">
+
+            <input type="hidden" th:field="*{id}">
+
+            <!-- ✅ FIXED ROLE CHECK -->
+            <div class="form-group"
+                 th:if="${session.user.role.name() == 'ADMIN'
+                         or session.user.role.name() == 'MANAGER'}">
+
+                <label>Assign To</label>
+                <select th:field="*{assignedUserId}" required>
+                    <option value="">Select Employee</option>
+                    <option th:each="u : ${users}"
+                            th:value="${u.id}"
+                            th:text="${u.fullName}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Task Title</label>
+                <input type="text"
+                       th:field="*{title}"
+                       th:readonly="${statusOnly != null}"
+                       required>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea th:field="*{description}"
+                          rows="3"
+                          th:readonly="${statusOnly != null}">
+                </textarea>
+            </div>
+
+            <div class="form-row" th:if="${statusOnly == null}">
+                <div class="form-group">
+                    <label>Due Date</label>
+                    <input type="date"
+                           th:field="*{dueDate}"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label>Category</label>
+                    <select th:field="*{category}" required>
+                        <option value="Work">Work</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Urgent">Urgent</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <select th:field="*{status}" required>
+                    <option value="TODO">To Do</option>
+                    <option value="IN_PROGRESS">In Progress</option>
+                    <option value="DONE">Done</option>
+
+                </select>
+            </div>
+
+            <div class="form-group" th:if="${statusOnly == null}">
+                <label>Priority</label>
+                <select th:field="*{priority}" required>
+                    <option value="HIGH">High</option>
+                    <option value="MEDIUM">Medium</option>
+                    <option value="LOW">Low</option>
+
+                </select>
+            </div>
+
+            <button type="submit" class="save-btn">
+                <span th:if="${taskDto.id != null}">Update Task</span>
+                <span th:if="${taskDto.id == null}">Save Task</span>
+            </button>
+
+            <a th:href="@{/tasks}" class="cancel-link">Back to Tasks</a>
+        </form>
+
+        <!-- ================= COMMENTS ================= -->
+        <div class="comments-section" th:if="${taskDto.id != null}">
+            <h3>Comments</h3>
+
+            <form th:action="@{/task/{id}/comment(id=${taskDto.id})}" method="post">
+                <textarea name="comment"
+                          placeholder="Write a comment..."
+                          required></textarea>
+                <button type="submit" class="btn-comment">
+                    Add Comment
+                </button>
+            </form>
+
+            <div class="comment-list"
+                 th:if="${task != null and task.comments != null}">
+
+                <div class="comment" th:each="c : ${task.comments}">
+                    <div class="comment-header">
+                        <span class="author"
+                              th:text="${c.user.fullName}">
+                        </span>
+
+                        <span class="time"
+                              th:text="${#temporals.format(c.createdAt, 'dd MMM yyyy HH:mm')}">
+                        </span>
+                    </div>
+
+                    <p th:text="${c.comment}"></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

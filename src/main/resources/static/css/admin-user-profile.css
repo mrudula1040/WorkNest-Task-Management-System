@@ -1,0 +1,183 @@
+/*
+   PAGE BASE
+= */
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 16px;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: #1f2937;
+}
+
+/*
+  HEADER
+ */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.btn-edit {
+    padding: 8px 14px;
+    font-size: 13px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-edit:hover {
+    opacity: 0.9;
+}
+
+/*
+   PROFILE CARD
+= */
+
+.profile-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 22px 26px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    margin-bottom: 30px;
+}
+
+.profile-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.label {
+    font-size: 12px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.value {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/*
+   BADGES
+= */
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+    width: fit-content;
+}
+
+.badge.todo {
+    background: #fff7ed;
+    color: #c2410c;
+}
+
+.badge.progress {
+    background: #eff6ff;
+    color: #1d4ed8;
+}
+
+.badge.done {
+    background: #ecfdf5;
+    color: #047857;
+}
+
+/*
+   SECTION TITLE
+= */
+
+.section-title {
+    font-size: 18px;
+    margin-bottom: 14px;
+    font-weight: 600;
+}
+
+/*
+   TABLE
+= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+    background: #f8fafc;
+}
+
+th {
+    padding: 14px 12px;
+    font-size: 13px;
+    text-align: left;
+    color: #374151;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+td {
+    padding: 14px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr:hover {
+    background: #f9fafb;
+}
+
+.actions {
+    text-align: center;
+}
+
+/*
+   EMPTY STATE
+= */
+
+.empty {
+    text-align: center;
+    padding: 20px;
+    color: #6b7280;
+    font-style: italic;
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}

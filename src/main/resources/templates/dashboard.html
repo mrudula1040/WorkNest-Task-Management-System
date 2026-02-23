@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="dashboard-container">
+
+    <!-- ================= WELCOME ================= -->
+    <header class="welcome-section">
+        <div>
+            <h1>
+                Welcome back,
+                <span th:text="${session.user.fullName}">User</span> 👋
+            </h1>
+
+            <span class="role-badge"
+                  th:text="${session.user.role.name()}">
+                ROLE
+            </span>
+        </div>
+
+        <!-- ✅ ONLY ADMIN -->
+        <div class="quick-actions"
+             th:if="${session.user.role.name() == 'ADMIN'}">
+
+            <a th:href="@{/task/add}" class="btn primary">
+                + Create Task
+            </a>
+
+            <a th:href="@{/tasks}" class="btn outline">
+                View Tasks
+            </a>
+        </div>
+    </header>
+
+    <!-- ================= ADMIN DASHBOARD ================= -->
+    <div th:if="${session.user.role.name() == 'ADMIN'}">
+
+        <section class="stats-grid">
+            <div class="stat-card users">
+                <h3>Total Users</h3>
+                <p th:text="${totalUsers}">0</p>
+            </div>
+
+            <div class="stat-card tasks">
+                <h3>Total Tasks</h3>
+                <p th:text="${totalTasks}">0</p>
+            </div>
+
+            <div class="stat-card pending">
+                <h3>Pending</h3>
+                <p th:text="${pendingTasks}">0</p>
+            </div>
+
+            <div class="stat-card completed">
+                <h3>Completed</h3>
+                <p th:text="${completedTasks}">0</p>
+            </div>
+
+            <div class="stat-card overdue">
+                <h3>Overdue</h3>
+                <p th:text="${overdueCount}">0</p>
+            </div>
+        </section>
+
+        <!-- RECENT TASKS -->
+        <section class="recent-tasks-card">
+            <h2>Recent Tasks</h2>
+
+            <div class="table-wrapper">
+                <table class="recent-table">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Assigned To</th>
+                        <th class="center">Status</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr th:each="task : ${recentTasks}">
+                        <td th:text="${task.title}"></td>
+                        <td th:text="${task.assignedUserName}"></td>
+                        <td class="center">
+                            <span class="status-badge"
+                                  th:classappend="${task.status}"
+                                  th:text="${task.status}">
+                            </span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ================= USER DASHBOARD ================= -->
+    <div th:if="${session.user.role.name() == 'USER'}" class="user-content">
+        <div class="welcome-box">
+            <h3>Ready to get things done?</h3>
+            <p>You have tasks waiting for your attention.</p>
+
+            <a th:href="@{/tasks}" class="btn primary">
+                Go to My Tasks
+            </a>
+        </div>
+    </div>
+
+    <!-- ================= MANAGER DASHBOARD ================= -->
+    <div th:if="${session.user.role.name() == 'MANAGER'}" class="role-card">
+        <h2>Manager Panel</h2>
+        <p>View your team and manage assigned tasks</p>
+
+        <a th:href="@{/manager/dashboard}" class="btn primary">
+            Open Manager Dashboard
+        </a>
+    </div>
+
+    <!-- ================= HR DASHBOARD ================= -->
+    <div th:if="${session.user.role.name() == 'HR'}" class="role-card">
+        <h2>HR Panel</h2>
+        <p>Manage employees and manager assignments</p>
+
+        <a th:href="@{/hr/workspace}" class="btn primary">
+            Open HR Dashboard
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | Employees</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+    <header class="page-header">
+        <h1>Employees</h1>
+        <p>List of all registered employees</p>
+    </header>
+
+    <!-- TABLE CARD -->
+    <section class="content-card">
+
+        <table class="simple-table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="u, stat : ${users}">
+                <td th:text="${stat.count}"></td>
+                <td th:text="${u.fullName}">Name</td>
+                <td th:text="${u.email}">Email</td>
+                <td th:text="${u.role}">ROLE</td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(users)}">
+                <td colspan="4" class="center">
+                    No employees found
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+</div>
+
+</body>
+</html>

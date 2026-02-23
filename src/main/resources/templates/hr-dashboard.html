@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | HR Workspace</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+    <link rel="stylesheet" th:href="@{/css/hr-dashboard.css}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="dashboard-container">
+
+    <!-- HEADER -->
+    <header class="welcome-section">
+        <div>
+            <h1>HR Workspace</h1>
+            <p>Assign managers to employees</p>
+        </div>
+    </header>
+
+    <!-- EMPLOYEE TABLE -->
+    <section class="recent-tasks-card">
+
+        <h2>Employee List</h2>
+
+        <div class="table-wrapper">
+            <table class="recent-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Manager</th>
+                    <th>Assign Manager</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="emp : ${employees}">
+                    <td th:text="${emp.fullName}">Name</td>
+                    <td th:text="${emp.email}">Email</td>
+
+                    <td>
+                        <span th:if="${emp.manager != null}"
+                              th:text="${emp.manager.fullName}">
+                        </span>
+
+                        <span th:if="${emp.manager == null}"
+                              class="status-badge pending">
+                            Not Assigned
+                        </span>
+                    </td>
+
+                    <td>
+                        <form th:action="@{/hr/assign-manager}"
+                              method="post"
+                              style="display:flex; gap:8px;">
+
+                            <input type="hidden"
+                                   name="employeeId"
+                                   th:value="${emp.id}" />
+
+                            <select name="managerId" required>
+                                <option value="">Select Manager</option>
+
+                                <option th:each="m : ${managers}"
+                                        th:value="${m.id}"
+                                        th:text="${m.fullName}">
+                                </option>
+                            </select>
+
+                            <button type="submit" class="btn primary">
+                                Assign
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(employees)}">
+                    <td colspan="4" class="center">
+                        No employees found
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

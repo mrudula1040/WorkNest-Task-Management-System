@@ -1,0 +1,54 @@
+.navbar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.logo-icon {
+    color: var(--primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.nav-item {
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #eef2ff;
+}
+
+.signup-btn {
+    background: var(--primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 10px;
+}
+
+.logout-btn {
+    color: var(--danger);
+    font-weight: 600;
+}

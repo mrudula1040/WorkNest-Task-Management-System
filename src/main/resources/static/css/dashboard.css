@@ -1,0 +1,188 @@
+/* ================= DASHBOARD LAYOUT ================= */
+
+.dashboard-container {
+    padding: 24px;
+}
+
+/* ================= WELCOME SECTION ================= */
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.welcome-section h1 {
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.role-badge {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 999px;
+    background: #e5e7eb;
+    color: #374151;
+    font-weight: 500;
+}
+
+/* ================= QUICK ACTIONS ================= */
+
+.quick-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* ================= STATS GRID (ADMIN) ================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.stat-card {
+    padding: 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #6b7280;
+    margin-bottom: 6px;
+}
+
+.stat-card p {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* Color accents */
+.stat-card.users { border-left: 4px solid #6366f1; }
+.stat-card.tasks { border-left: 4px solid #0ea5e9; }
+.stat-card.pending { border-left: 4px solid #f59e0b; }
+.stat-card.completed { border-left: 4px solid #22c55e; }
+.stat-card.overdue { border-left: 4px solid #ef4444; }
+
+/* ================= ROLE CARDS (HR / MANAGER) ================= */
+
+.role-card {
+    max-width: 420px;
+    padding: 24px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.role-card h2 {
+    margin-bottom: 6px;
+}
+
+.role-card p {
+    margin-bottom: 16px;
+    color: #6b7280;
+}
+
+/* ================= USER DASHBOARD ================= */
+
+.user-content {
+    margin-top: 40px;
+}
+
+.welcome-box {
+    max-width: 480px;
+    padding: 28px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: #ffffff;
+}
+
+.welcome-box h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.welcome-box p {
+    margin-bottom: 18px;
+    opacity: 0.9;
+}
+.count-badge {
+    background: #eef2ff;
+    color: #4338ca;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.role-badge.hr {
+    background: #ecfeff;
+    color: #0369a1;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+/* PAGE HEADER */
+.page-header {
+    margin-bottom: 18px;
+}
+
+.page-header h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.page-header p {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+/* CARD */
+.content-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+/* TABLE */
+.simple-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.simple-table thead th {
+    text-align: left;
+    padding: 10px 8px;
+    font-weight: 600;
+    color: #374151;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.simple-table tbody td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #111827;
+}
+
+.simple-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* CENTER TEXT */
+.center {
+    text-align: center;
+    color: #6b7280;
+}

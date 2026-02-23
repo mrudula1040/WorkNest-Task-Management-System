@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | Manager Dashboard</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/manager-dashboard.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="dashboard-container"
+     th:if="${session.user.role.name() == 'MANAGER'}">
+
+    <!-- HEADER -->
+    <header class="welcome-section">
+        <div>
+            <h1>
+                Welcome,
+                <span th:text="${session.user.fullName}">Manager</span>
+            </h1>
+            <p>Manage and track your team’s work</p>
+        </div>
+
+        <span class="role-badge"
+              th:text="${session.user.role.name()}">
+            MANAGER
+        </span>
+    </header>
+
+    <!-- TEAM CARD -->
+    <section class="recent-tasks-card">
+
+        <div class="card-header">
+            <h2>My Team Members</h2>
+            <span class="count-badge"
+                  th:text="${#lists.size(team)} + ' Members'">
+                0 Members
+            </span>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="recent-table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th class="center">Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="emp, stat : ${team}">
+                    <td th:text="${stat.count}"></td>
+
+                    <td>
+                        <strong th:text="${emp.fullName}"></strong>
+                    </td>
+
+                    <td th:text="${emp.email}"></td>
+
+                    <td class="center">
+                        <a class="btn outline"
+                           th:href="@{/manager/team/{id}/tasks(id=${emp.id})}">
+                            View Tasks
+                        </a>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(team)}">
+                    <td colspan="4" class="center">
+                        No team members assigned
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

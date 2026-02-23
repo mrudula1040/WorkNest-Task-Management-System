@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | Employee Tasks</title>
+
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/manager-dashboard.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="dashboard-container"
+     th:if="${session.user.role.name() == 'MANAGER'}">
+
+    <!-- HEADER -->
+    <header class="welcome-section">
+        <div>
+            <h1 th:text="${user.fullName}">Employee Name</h1>
+            <p>Assigned tasks overview</p>
+        </div>
+
+        <a th:href="@{/manager/dashboard}" class="btn outline">
+            ← Back
+        </a>
+    </header>
+
+    <!-- TASK TABLE -->
+    <section class="recent-tasks-card">
+
+        <div class="card-header">
+            <h2>Tasks</h2>
+            <span class="count-badge"
+                  th:text="${#lists.size(tasks)} + ' Tasks'">
+                0 Tasks
+            </span>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="recent-table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th class="center">Status</th>
+                    <th>Priority</th>
+                    <th>Due Date</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="task : ${tasks}">
+                    <td th:text="${task.title}"></td>
+
+                    <td class="center">
+                        <span class="status-badge"
+                              th:classappend="${task.status}"
+                              th:text="${task.status}">
+                        </span>
+                    </td>
+
+                    <td th:text="${task.priority}"></td>
+                    <td th:text="${#temporals.format(task.dueDate, 'dd MMM yyyy')}"></td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(tasks)}">
+                    <td colspan="4" class="center">
+                        No tasks assigned
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<div th:fragment="navbar" class="navbar">
+    <div class="navbar-container">
+
+        <!-- LOGO -->
+        <div class="logo">
+            <span class="logo-icon">Work</span>Nest
+        </div>
+
+        <!-- NAV LINKS -->
+        <div class="nav-links">
+
+            <!-- ================= LOGGED IN ================= -->
+            <th:block th:if="${session.user != null}">
+
+                <!-- COMMON DASHBOARD -->
+                <a th:href="@{/dashboard}" class="nav-item">
+                    Dashboard
+                </a>
+
+                <!-- ================= ADMIN ================= -->
+                <a th:if="${session.user.role.name() == 'ADMIN'}"
+                   th:href="@{/tasks}"
+                   class="nav-item">
+                    All Tasks
+                </a>
+
+                <!-- ================= MANAGER ================= -->
+                <a th:if="${session.user.role.name() == 'MANAGER'}"
+                   th:href="@{/manager/dashboard}"
+                   class="nav-item">
+                    My Team
+                </a>
+
+                <!-- ================= USER ================= -->
+                <a th:if="${session.user.role.name() == 'USER'}"
+                   th:href="@{/tasks}"
+                   class="nav-item">
+                    My Tasks
+                </a>
+
+                <!-- ================= HR ================= -->
+                <a th:if="${session.user.role.name() == 'HR'}"
+                   th:href="@{/hr/workspace}"
+                   class="nav-item">
+                    HR Workspace
+                </a>
+
+                <a th:if="${session.user.role.name() == 'HR'}"
+                   th:href="@{/hr/employees}"
+                   class="nav-item">
+                    Employees
+                </a>
+
+                <!-- LOGOUT -->
+                <a th:href="@{/logout}" class="logout-btn">
+                    Logout
+                </a>
+
+            </th:block>
+
+            <!-- ================= NOT LOGGED IN ================= -->
+            <th:block th:if="${session.user == null}">
+                <a th:href="@{/login}" class="nav-item">Login</a>
+                <a th:href="@{/signup}" class="nav-item signup-btn">
+                    Get Started
+                </a>
+            </th:block>
+
+        </div>
+    </div>
+</div>

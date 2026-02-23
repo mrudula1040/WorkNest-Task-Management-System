@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkNest | User Profile</title>
+    <link rel="stylesheet" th:href="@{/css/admin-user-profile.css}">
+
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="container">
+    <div class="header">
+        <h2 th:text="${user != null ? user.fullName + ' - Profile' : 'Employee Profile'}">Profile</h2>
+        <a th:href="@{/tasks}" class="btn-edit" style="background: #6c757d; color: white; text-decoration: none;">&larr; Back</a>
+    </div>
+
+    <div class="profile-card" th:if="${user != null}">
+        <div class="profile-info">
+            <div class="info-item"><span class="label">Full Name</span><span class="value" th:text="${user.fullName}"></span></div>
+            <div class="info-item"><span class="label">Email</span><span class="value" th:text="${user.email}"></span></div>
+            <div class="info-item"><span class="label">Role</span><span class="badge todo" th:text="${user.role}"></span></div>
+            <div class="info-item"><span class="label">ID</span><span class="value" th:text="'#WN-' + ${user.id}"></span></div>
+        </div>
+    </div>
+
+    <h3 class="section-title">Assigned Tasks</h3>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Task Title</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.title}"></td>
+            <td>
+                <span class="badge" th:classappend="${task.status == 'DONE' ? 'done' : (task.status == 'IN_PROGRESS' ? 'progress' : 'todo')}" th:text="${task.status}"></span>
+            </td>
+            <td th:text="${task.priority}"></td>
+            <td th:text="${task.dueDate != null ? task.dueDate : 'N/A'}"></td>
+            <td class="actions">
+                <a th:href="@{/task/edit/{id}(id=${task.taskId})}" class="btn-edit">Edit Task</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(tasks)}">
+            <td colspan="5" class="empty">.............</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
