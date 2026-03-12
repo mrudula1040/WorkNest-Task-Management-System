@@ -1,8 +1,9 @@
-# 🚀 WorkNest – Role-Based Task Management System #
+# 🚀 WorkNest – Role-Based Task Management System
+WorkNest is a role-based task management system built using Spring Boot that helps organizations manage tasks efficiently across different roles such as Admin, Manager, HR, and Employee.
+The system provides role-specific dashboards and task management capabilities.
 
-WorkNest is a Role-Based Task Management System built using Spring Boot.
-It allows organizations to manage tasks efficiently across different roles such as Admin, Manager, HR, and Employee.
 
+---
 # 🛠️ Tech Stack
 
 Java
@@ -19,12 +20,12 @@ Spring Data JPA
 
 Maven
 
+---
 # 📌 Project Overview
+This project simulates a real-world company task management system where users with different roles have different permissions and responsibilities.
+Each user gets a dashboard based on their role.
 
-This project simulates a real-world company task management system where different roles have different responsibilities and access levels.
-
-Each user sees a dashboard based on their role.
-
+---
 # 👥 Roles & Functionalities #
  👨‍💼 Admin
 
@@ -60,6 +61,8 @@ Update task status (To Do, In Progress, Done)
 
 Track deadlines and priorities
 
+----
+
 # ✨ Key Features 
 
 Role-Based Access System
@@ -80,6 +83,8 @@ Layered Architecture (Controller – Service – Repository)
 
 JPA Relationships
 
+
+----
 # 🗃️ Database Entities #
 
 # User
@@ -112,11 +117,20 @@ dueDate
 
 assignedUser
 
-# 📚 Learning Purpose #
 
-Through this project, I gained hands-on experience in:
+----
+# 📚 Learning Outcomes
+Through this project I gained hands-on experience in:
 Designing a role-based system
 Implementing layered architecture
-Working with database relationships using JPA
+Working with database relationships using Spring Data JPA
 Building dashboards with business logic
-I am currently learning Spring Security , and I plan to enhance this project further with improved authentication and authorization.
+Developing web applications using Spring MVC
+
+
+----
+# 🔮 Future Improvements
+REST API support
+JWT based authentication using Spring Security
+Task notifications
+File attachments for tasks
